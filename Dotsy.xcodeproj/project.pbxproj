@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CB4D22EF1A02DB4400B9353D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D22EE1A02DB4400B9353D /* main.m */; };
+		CB4D22F21A02DB4400B9353D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D22F11A02DB4400B9353D /* AppDelegate.m */; };
+		CB4D22FA1A02DB4400B9353D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB4D22F91A02DB4400B9353D /* Images.xcassets */; };
+		CB4D23091A02DB4400B9353D /* DotsyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D23081A02DB4400B9353D /* DotsyTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CB4D23031A02DB4400B9353D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB4D22E11A02DB4400B9353D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB4D22E81A02DB4400B9353D;
+			remoteInfo = Dotsy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CB4D22E91A02DB4400B9353D /* Dotsy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dotsy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB4D22ED1A02DB4400B9353D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB4D22EE1A02DB4400B9353D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CB4D22F01A02DB4400B9353D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CB4D22F11A02DB4400B9353D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CB4D22F91A02DB4400B9353D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CB4D23021A02DB4400B9353D /* DotsyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DotsyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB4D23071A02DB4400B9353D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB4D23081A02DB4400B9353D /* DotsyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DotsyTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB4D22E61A02DB4400B9353D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB4D22FF1A02DB4400B9353D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB4D22E01A02DB4400B9353D = {
+			isa = PBXGroup;
+			children = (
+				CB4D22EB1A02DB4400B9353D /* Dotsy */,
+				CB4D23051A02DB4400B9353D /* DotsyTests */,
+				CB4D22EA1A02DB4400B9353D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CB4D22EA1A02DB4400B9353D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB4D22E91A02DB4400B9353D /* Dotsy.app */,
+				CB4D23021A02DB4400B9353D /* DotsyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB4D22EB1A02DB4400B9353D /* Dotsy */ = {
+			isa = PBXGroup;
+			children = (
+				CB4D22F01A02DB4400B9353D /* AppDelegate.h */,
+				CB4D22F11A02DB4400B9353D /* AppDelegate.m */,
+				CB4D22F91A02DB4400B9353D /* Images.xcassets */,
+				CB4D22EC1A02DB4400B9353D /* Supporting Files */,
+			);
+			path = Dotsy;
+			sourceTree = "<group>";
+		};
+		CB4D22EC1A02DB4400B9353D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB4D22ED1A02DB4400B9353D /* Info.plist */,
+				CB4D22EE1A02DB4400B9353D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB4D23051A02DB4400B9353D /* DotsyTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB4D23081A02DB4400B9353D /* DotsyTests.m */,
+				CB4D23061A02DB4400B9353D /* Supporting Files */,
+			);
+			path = DotsyTests;
+			sourceTree = "<group>";
+		};
+		CB4D23061A02DB4400B9353D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB4D23071A02DB4400B9353D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB4D22E81A02DB4400B9353D /* Dotsy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB4D230C1A02DB4400B9353D /* Build configuration list for PBXNativeTarget "Dotsy" */;
+			buildPhases = (
+				CB4D22E51A02DB4400B9353D /* Sources */,
+				CB4D22E61A02DB4400B9353D /* Frameworks */,
+				CB4D22E71A02DB4400B9353D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dotsy;
+			productName = Dotsy;
+			productReference = CB4D22E91A02DB4400B9353D /* Dotsy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CB4D23011A02DB4400B9353D /* DotsyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB4D230F1A02DB4400B9353D /* Build configuration list for PBXNativeTarget "DotsyTests" */;
+			buildPhases = (
+				CB4D22FE1A02DB4400B9353D /* Sources */,
+				CB4D22FF1A02DB4400B9353D /* Frameworks */,
+				CB4D23001A02DB4400B9353D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB4D23041A02DB4400B9353D /* PBXTargetDependency */,
+			);
+			name = DotsyTests;
+			productName = DotsyTests;
+			productReference = CB4D23021A02DB4400B9353D /* DotsyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB4D22E11A02DB4400B9353D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Karl Grogan";
+				TargetAttributes = {
+					CB4D22E81A02DB4400B9353D = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					CB4D23011A02DB4400B9353D = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = CB4D22E81A02DB4400B9353D;
+					};
+				};
+			};
+			buildConfigurationList = CB4D22E41A02DB4400B9353D /* Build configuration list for PBXProject "Dotsy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CB4D22E01A02DB4400B9353D;
+			productRefGroup = CB4D22EA1A02DB4400B9353D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB4D22E81A02DB4400B9353D /* Dotsy */,
+				CB4D23011A02DB4400B9353D /* DotsyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB4D22E71A02DB4400B9353D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB4D22FA1A02DB4400B9353D /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB4D23001A02DB4400B9353D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB4D22E51A02DB4400B9353D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB4D22F21A02DB4400B9353D /* AppDelegate.m in Sources */,
+				CB4D22EF1A02DB4400B9353D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB4D22FE1A02DB4400B9353D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB4D23091A02DB4400B9353D /* DotsyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB4D23041A02DB4400B9353D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB4D22E81A02DB4400B9353D /* Dotsy */;
+			targetProxy = CB4D23031A02DB4400B9353D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CB4D230A1A02DB4400B9353D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CB4D230B1A02DB4400B9353D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CB4D230D1A02DB4400B9353D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Dotsy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CB4D230E1A02DB4400B9353D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Dotsy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CB4D23101A02DB4400B9353D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DotsyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dotsy.app/Dotsy";
+			};
+			name = Debug;
+		};
+		CB4D23111A02DB4400B9353D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DotsyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dotsy.app/Dotsy";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB4D22E41A02DB4400B9353D /* Build configuration list for PBXProject "Dotsy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB4D230A1A02DB4400B9353D /* Debug */,
+				CB4D230B1A02DB4400B9353D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB4D230C1A02DB4400B9353D /* Build configuration list for PBXNativeTarget "Dotsy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB4D230D1A02DB4400B9353D /* Debug */,
+				CB4D230E1A02DB4400B9353D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CB4D230F1A02DB4400B9353D /* Build configuration list for PBXNativeTarget "DotsyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB4D23101A02DB4400B9353D /* Debug */,
+				CB4D23111A02DB4400B9353D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CB4D22E11A02DB4400B9353D /* Project object */;
+}
