@@ -41,7 +41,9 @@
                          
                          self.tracks = (NSArray *)jsonResponse;
                          
-                         NSLog(@"%@", [self.tracks description]);
+                         //NSLog(@"%@", [self.tracks description]);
+                         
+                         [self.tableView reloadData];
                      }];
         }
     };
@@ -73,25 +75,48 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.tracks.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Track"];
     
     // Configure the cell...
-    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Track"];
+        cell.textLabel.text = [self.tracks objectAtIndex:indexPath.row][@"title"];
+        cell.detailTextLabel.text = [self.tracks objectAtIndex:indexPath.row][@"user"][@"username"];
+    }
     return cell;
 }
-*/
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Cell was selected");
+    NSDictionary *track = [self.tracks objectAtIndex:indexPath.row];
+    NSString *streamURL = [track objectForKey:@"stream_url"];
+    NSLog(@"%@", streamURL);
+    
+    [SCRequest performMethod:SCRequestMethodGET
+                  onResource:[NSURL URLWithString:streamURL]
+             usingParameters:nil
+                 withAccount:[SCSoundCloud account]
+      sendingProgressHandler:nil
+             responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                 NSLog(@"Inside the response handler");
+                 NSLog(@"%@", [response description]);
+                 NSError *playerError;
+                 self.player = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
+                 [self.player prepareToPlay];
+                 [self.player play];
+             }];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
