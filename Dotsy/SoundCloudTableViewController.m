@@ -7,6 +7,7 @@
 //
 
 #import "SoundCloudTableViewController.h"
+#import "SCUI.h"
 
 @interface SoundCloudTableViewController ()
 
@@ -17,11 +18,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    SCLoginViewControllerCompletionHandler handler = ^(NSError *error) {
+        if (SC_CANCELED(error)) {
+            NSLog(@"Canceled!");
+        } else if (error) {
+            NSLog(@"Error: %@", [error localizedDescription]);
+        } else {
+            NSLog(@"Done!");
+        }
+    };
+    
+    [SCSoundCloud requestAccessWithPreparedAuthorizationURLHandler:^(NSURL *preparedURL) {
+        SCLoginViewController *loginViewController;
+        
+        loginViewController = [SCLoginViewController
+                               loginViewControllerWithPreparedURL:preparedURL
+                               completionHandler:handler];
+        [self presentModalViewController:loginViewController animated:YES];
+    }];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
 }
 
 - (void)didReceiveMemoryWarning {

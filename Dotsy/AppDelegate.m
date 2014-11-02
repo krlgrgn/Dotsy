@@ -34,13 +34,15 @@
     
     SoundCloudTableViewController *soundCloudTableViewController = [[SoundCloudTableViewController alloc] init];
     soundCloudTableViewController.title = @"SoundCloud";
+    UINavigationController *souncCloudNavController = [[UINavigationController alloc] initWithRootViewController:soundCloudTableViewController];
     
     UITableViewController *spotifyTableViewController = [[UITableViewController alloc] init];
     spotifyTableViewController.title = @"Spotify";
+    UINavigationController *spotifyNavController = [[UINavigationController alloc] initWithRootViewController:spotifyTableViewController];
     
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     
-    [tabBarController setViewControllers:@[soundCloudTableViewController, spotifyTableViewController]];
+    [tabBarController setViewControllers:@[souncCloudNavController, spotifyNavController]];
     
     [self.window setRootViewController:tabBarController];
     
