@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "SoundCloudTableViewController.h"
+#import "SCUI.h"
 
 @interface AppDelegate ()
 
@@ -14,13 +16,23 @@
 
 @implementation AppDelegate
 
++ (void)initialize {
+    // Configure our SoundCloud application.
+    [SCSoundCloud setClientID:@"a8ec7af43896a1a16c722297804fa0fe"
+                       secret:@"dafd2220336ddf759b7b103e3efa1f04"
+                  redirectURL:[NSURL URLWithString:@"dotsy://oauth"]];
+    
+    // Login to SoundCloud using my credentials.
+    
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Override point for customization after application launch.
     
-    UITableViewController *soundCloudTableViewController = [[UITableViewController alloc] init];
+    SoundCloudTableViewController *soundCloudTableViewController = [[SoundCloudTableViewController alloc] init];
     soundCloudTableViewController.title = @"SoundCloud";
     
     UITableViewController *spotifyTableViewController = [[UITableViewController alloc] init];
