@@ -25,6 +25,24 @@
             NSLog(@"Error: %@", [error localizedDescription]);
         } else {
             NSLog(@"Done!");
+            
+            NSString *resourceURL = @"https://api.soundcloud.com/me/favorites.json";
+            [SCRequest performMethod:SCRequestMethodGET
+                          onResource:[NSURL URLWithString:resourceURL]
+                     usingParameters:nil
+                         withAccount:[SCSoundCloud account]
+              sendingProgressHandler:nil
+                     responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                         NSLog(@"Inside tracks request handler.");
+                         NSJSONSerialization *jsonResponse = [NSJSONSerialization
+                                                              JSONObjectWithData:data
+                                                              options:0
+                                                              error:nil];
+                         
+                         self.tracks = (NSArray *)jsonResponse;
+                         
+                         NSLog(@"%@", [self.tracks description]);
+                     }];
         }
     };
     

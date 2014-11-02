@@ -10,4 +10,6 @@
 
 @interface SoundCloudTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSArray *tracks;
+
 @end
