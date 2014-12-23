@@ -25,6 +25,10 @@
 		CB504D231A0638830084E04F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB504D1C1A0638830084E04F /* QuartzCore.framework */; };
 		CB504D241A0638830084E04F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB504D1D1A0638830084E04F /* Security.framework */; };
 		CB504D261A0639650084E04F /* SoundCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CB504D251A0639650084E04F /* SoundCloud.bundle */; };
+		CB6A1F181A068D4B00450047 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6A1F171A068D4B00450047 /* AVFoundation.framework */; };
+		CB6A1F211A06925600450047 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6A1F201A06925600450047 /* SystemConfiguration.framework */; };
+		CB6A1F231A06926100450047 /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6A1F221A06926100450047 /* MediaAccessibility.framework */; };
+		CB79ACA81A45FC8A003F75AB /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB79ACA71A45FC8A003F75AB /* GoogleCast.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +171,10 @@
 		CB504D1C1A0638830084E04F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB504D1D1A0638830084E04F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CB504D251A0639650084E04F /* SoundCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SoundCloud.bundle; path = CocoaSoundCloudUI/SoundCloud.bundle; sourceTree = "<group>"; };
+		CB6A1F171A068D4B00450047 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CB6A1F201A06925600450047 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CB6A1F221A06926100450047 /* MediaAccessibility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaAccessibility.framework; path = System/Library/Frameworks/MediaAccessibility.framework; sourceTree = SDKROOT; };
+		CB79ACA71A45FC8A003F75AB /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleCast.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,11 +182,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB6A1F231A06926100450047 /* MediaAccessibility.framework in Frameworks */,
+				CB6A1F211A06925600450047 /* SystemConfiguration.framework in Frameworks */,
+				CB6A1F181A068D4B00450047 /* AVFoundation.framework in Frameworks */,
 				CB504D1E1A0638830084E04F /* AddressBook.framework in Frameworks */,
 				CB504D1F1A0638830084E04F /* AddressBookUI.framework in Frameworks */,
 				CB504D201A0638830084E04F /* CoreGraphics.framework in Frameworks */,
 				CB504D211A0638830084E04F /* CoreLocation.framework in Frameworks */,
 				CB504D221A0638830084E04F /* CoreText.framework in Frameworks */,
+				CB79ACA81A45FC8A003F75AB /* GoogleCast.framework in Frameworks */,
 				CB504D231A0638830084E04F /* QuartzCore.framework in Frameworks */,
 				CB504D241A0638830084E04F /* Security.framework in Frameworks */,
 				CB504D121A0638820084E04F /* libJSONKit.a in Frameworks */,
@@ -202,6 +214,10 @@
 		CB4D22E01A02DB4400B9353D = {
 			isa = PBXGroup;
 			children = (
+				CB79ACA71A45FC8A003F75AB /* GoogleCast.framework */,
+				CB6A1F221A06926100450047 /* MediaAccessibility.framework */,
+				CB6A1F201A06925600450047 /* SystemConfiguration.framework */,
+				CB6A1F171A068D4B00450047 /* AVFoundation.framework */,
 				CB504D251A0639650084E04F /* SoundCloud.bundle */,
 				CB504D171A0638830084E04F /* AddressBook.framework */,
 				CB504D181A0638830084E04F /* AddressBookUI.framework */,
@@ -645,6 +661,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Karl/Downloads/GoogleCastFramework-2.4.0-Release",
+					"/Users/Karl/Downloads/GoogleCastSDK-2.5.0-Release",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Dotsy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
@@ -661,6 +683,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Karl/Downloads/GoogleCastFramework-2.4.0-Release",
+					"/Users/Karl/Downloads/GoogleCastSDK-2.5.0-Release",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Dotsy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

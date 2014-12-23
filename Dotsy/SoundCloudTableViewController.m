@@ -9,6 +9,7 @@
 #import "SoundCloudTableViewController.h"
 #import "SCUI.h"
 
+
 @interface SoundCloudTableViewController ()
 
 @end
@@ -17,43 +18,57 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    NSLog(@"1 -- Scanning for Chromecast devices.");
     
+    /*
+     * Initialize Chromecast device scanner
+     * Set this controller instance as the one to listen.
+     * Start scanning for Chromecast devices.
+     */
+    self.deviceScanner = [[GCKDeviceScanner alloc] init];
+    [self.deviceScanner addListener:self];
+    [self.deviceScanner startScan];
+    
+    NSLog(@"1.1 -- Creating Soundcloud login completion handler.");
+    
+    /*
+     * This ia completion handler is fired when the user successfully logs in to their Soundcloud account.
+     */
     SCLoginViewControllerCompletionHandler handler = ^(NSError *error) {
         if (SC_CANCELED(error)) {
-            NSLog(@"Canceled!");
+            NSLog(@"Soundcloud login canceled.");
         } else if (error) {
             NSLog(@"Error: %@", [error localizedDescription]);
         } else {
-            NSLog(@"Done!");
+            NSLog(@"Soundcloud login successful.");
+            NSLog(@"Creating request to pull back Soundcloud favorites.");
             
-            NSString *resourceURL = @"https://api.soundcloud.com/me/favorites.json";
             [SCRequest performMethod:SCRequestMethodGET
-                          onResource:[NSURL URLWithString:resourceURL]
+                          onResource:[NSURL URLWithString:@"https://api.soundcloud.com/me/favorites.json"]
                      usingParameters:nil
                          withAccount:[SCSoundCloud account]
               sendingProgressHandler:nil
                      responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                         NSLog(@"Inside tracks request handler.");
-                         NSJSONSerialization *jsonResponse = [NSJSONSerialization
-                                                              JSONObjectWithData:data
-                                                              options:0
-                                                              error:nil];
+                            NSLog(@"Inside response handler for the Soundcloud favorites request.");
                          
-                         self.tracks = (NSArray *)jsonResponse;
-                         
-                         //NSLog(@"%@", [self.tracks description]);
-                         
-                         [self.tableView reloadData];
-                     }];
+                            // Serialize the JSON response.
+                            NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                            self.tracks = (NSArray *)jsonResponse;
+                            // We need to reload the data in the table to display the changes (the track favorites returned in our repsonse.)
+                            [self.tableView reloadData];
+            }];
         }
     };
     
+    NSLog(@"1.2 -- Created Soundcloud login completion handler.");
+    
     [SCSoundCloud requestAccessWithPreparedAuthorizationURLHandler:^(NSURL *preparedURL) {
-        SCLoginViewController *loginViewController;
-        
-        loginViewController = [SCLoginViewController
-                               loginViewControllerWithPreparedURL:preparedURL
-                               completionHandler:handler];
+        /* 
+         * Create the Soundcloud login view controller.
+         * Present the login controller with a modal view.
+         */
+        SCLoginViewController *loginViewController = [SCLoginViewController loginViewControllerWithPreparedURL:preparedURL completionHandler:handler];
         [self presentModalViewController:loginViewController animated:YES];
     }];
     
@@ -73,13 +88,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return self.tracks.count;
 }
@@ -98,10 +111,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Cell was selected");
+    NSLog(@"8 -- Song cell was selected");
     NSDictionary *track = [self.tracks objectAtIndex:indexPath.row];
+    NSLog(@"8.1 -- %@", [track description]);
+    // Get the streaming URL so we can actually stream the song!
     NSString *streamURL = [track objectForKey:@"stream_url"];
-    NSLog(@"%@", streamURL);
+    NSLog(@"8.2 -  %@", streamURL);
+    
+    NSLog(@"8.3 -- Creating request to stream the track.");
     
     [SCRequest performMethod:SCRequestMethodGET
                   onResource:[NSURL URLWithString:streamURL]
@@ -109,12 +126,50 @@
                  withAccount:[SCSoundCloud account]
       sendingProgressHandler:nil
              responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                 NSLog(@"Inside the response handler");
+                 NSLog(@"9 -- Inside the response handler for the stream request.");
                  NSLog(@"%@", [response description]);
-                 NSError *playerError;
-                 self.player = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
-                 [self.player prepareToPlay];
-                 [self.player play];
+                 NSLog(@"10 -- Creating metadata.");
+                 
+                 /*
+                  * GCKMediaMetadata is a class that just adds some descriptive information for the media being played on the Chromecast.
+                  */
+                 GCKMediaMetadata *metadata = [[GCKMediaMetadata alloc] init];
+                 [metadata setString:track[@"title"] forKey:kGCKMetadataKeyTitle];
+                 [metadata setString:track[@"user"][@"username"] forKey:kGCKMetadataKeySubtitle];
+                 
+                 // track[@"artwork_url"] is a NSString object so we need to create an NSURL object for this to work.
+                 // Even if you don't it doesn't seem to throw an error.
+                 [metadata addImage:[[GCKImage alloc] initWithURL:[[NSURL alloc] initWithString:track[@"artwork_url"]] width:100 height:100]];
+
+                 // Since the response type is of NSURLResponse we need to cast it to NSHTTPURLResponse because that contains header information we need to access.
+                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+
+                 // Just some logging.
+                 NSLog(@"%@", response.MIMEType);
+                 NSLog(@"%@", httpResponse.allHeaderFields);
+                 NSLog(@"%i", [httpResponse.allHeaderFields[@"x-amz-meta-duration"] integerValue]);
+
+                 /*
+                  * This allows the media to be cast on the media control channel.
+                  * GCKMediaInformation is the class the model's a media item that is used by the Chromecast.
+                  */
+                 GCKMediaInformation *mediaInformation =
+                 [[GCKMediaInformation alloc] initWithContentID:[response.URL absoluteString]
+                                                     streamType:GCKMediaStreamTypeNone
+                                                    contentType:response.MIMEType
+                                                       metadata:metadata
+                                                 streamDuration:[httpResponse.allHeaderFields[@"x-amz-meta-duration"] integerValue]
+                                                     customData:nil];
+                 
+                 NSLog(@"MediaInformation");
+                 NSLog(@"%@", [mediaInformation description]);
+    
+                 // Use the media control channel created when the media receiver application launched to load the media onto the Chromecast.
+                 // This will begin casting the track on the Chromecast.
+                 [self.mediaControlChannel loadMedia:mediaInformation autoplay:TRUE playPosition:0];
+                 
+//                 UIViewController *playerController = [[UIViewController alloc] init];
+//                 [self.navigationController pushViewController:playerController animated:TRUE];
              }];
 }
 /*
@@ -160,5 +215,49 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - GCKDeviceScannerListener
+
+- (void)deviceDidComeOnline:(GCKDevice *)device {
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    
+    NSLog(@"2 -- Chromecast device found.");
+    NSLog(@"3 -- Connecting to the device");
+
+    // Since the Chromecast is online, create the device manager.
+    self.deviceManager = [[GCKDeviceManager alloc] initWithDevice:self.deviceScanner.devices[0]
+                                                clientPackageName:[info objectForKey:@"CFBundleIdentifier"]];
+    
+    // Set the device manager delegate to the instance of this controller.
+    self.deviceManager.delegate = self;
+    [self.deviceManager connect];
+}
+
+- (void)deviceDidGoOffline:(GCKDevice *)device {
+    NSLog(@"4 -- Chromecast device went offline.");
+}
+
+#pragma mark - GCKDeviceManagerDelegate
+
+- (void)deviceManagerDidConnect:(GCKDeviceManager *)deviceManager {
+    NSLog(@"5 -- Connected to Google Chromecast.");
+    NSLog(@"6 -- Launching application with default media receiver application ID.");
+    [self.deviceManager launchApplication:kGCKMediaDefaultReceiverApplicationID];
+    NSLog(@"6.1 -- Launched application with default media receiver application ID.");
+}
+
+- (void)deviceManager:(GCKDeviceManager *)deviceManager
+didConnectToCastApplication:(GCKApplicationMetadata *)applicationMetadata
+            sessionID:(NSString *)sessionID
+  launchedApplication:(BOOL)launchedApplication {
+    
+    NSLog(@"7 -- Connected to Chromecast media cast receiver application");
+    
+    // Create a media control channel to allow us to play, pause, and stop the media on the receiver application.
+    self.mediaControlChannel = [[GCKMediaControlChannel alloc] init];
+    self.mediaControlChannel.delegate = self;
+    [self.deviceManager addChannel:self.mediaControlChannel];
+    [self.mediaControlChannel requestStatus];
+}
 
 @end

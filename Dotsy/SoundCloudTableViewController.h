@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import <GoogleCast/GoogleCast.h>
 
 @interface SoundCloudTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *tracks;
 @property (nonatomic, strong) AVAudioPlayer *player;
+
+@property (nonatomic, strong) GCKDeviceScanner *deviceScanner;
+@property (nonatomic, strong) GCKDeviceManager *deviceManager;
+@property (nonatomic, strong) GCKMediaControlChannel *mediaControlChannel;
+
+
 
 @end
