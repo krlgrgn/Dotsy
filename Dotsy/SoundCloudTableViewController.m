@@ -8,6 +8,7 @@
 
 #import "SoundCloudTableViewController.h"
 #import "SCUI.h"
+#import "PlaybackViewController.h"
 
 
 @interface SoundCloudTableViewController ()
@@ -139,7 +140,17 @@
                  
                  // track[@"artwork_url"] is a NSString object so we need to create an NSURL object for this to work.
                  // Even if you don't it doesn't seem to throw an error.
-                 [metadata addImage:[[GCKImage alloc] initWithURL:[[NSURL alloc] initWithString:track[@"artwork_url"]] width:100 height:100]];
+                 
+                 /*
+                  * The default artwork URL Soundcloud givues is not the high resolution one wewant.
+                  * To retrieve the high resolution image we need to change the artowrk_url by replacing the 'large' substring with 't500x500'
+                 */
+                 NSString *artWorkURL = track[@"artwork_url"];
+                 NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"large" options:NSRegularExpressionCaseInsensitive error:nil];
+                 NSString *hiResArtWorkURL = [regex stringByReplacingMatchesInString:artWorkURL options:0 range:NSMakeRange(0, [artWorkURL length]) withTemplate:@"t500x500"];
+                 NSLog(@"10 -- High resolution artowrk URL: %@", hiResArtWorkURL);
+                 
+                 [metadata addImage:[[GCKImage alloc] initWithURL:[[NSURL alloc] initWithString:hiResArtWorkURL] width:100 height:100]];
 
                  // Since the response type is of NSURLResponse we need to cast it to NSHTTPURLResponse because that contains header information we need to access.
                  NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
@@ -166,10 +177,12 @@
     
                  // Use the media control channel created when the media receiver application launched to load the media onto the Chromecast.
                  // This will begin casting the track on the Chromecast.
-                 [self.mediaControlChannel loadMedia:mediaInformation autoplay:TRUE playPosition:0];
+                 //[self.mediaControlChannel loadMedia:mediaInformation autoplay:TRUE playPosition:0];
                  
-//                 UIViewController *playerController = [[UIViewController alloc] init];
-//                 [self.navigationController pushViewController:playerController animated:TRUE];
+                 PlaybackViewController *playbackViewController = [[PlaybackViewController alloc] init];
+                 playbackViewController.mediaControlChannel = self.mediaControlChannel;
+                 playbackViewController.artworkURL = [[NSURL alloc] initWithString:hiResArtWorkURL];
+                 [self.navigationController pushViewController:playbackViewController animated:TRUE];
              }];
 }
 /*

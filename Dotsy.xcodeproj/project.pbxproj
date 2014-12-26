@@ -29,6 +29,7 @@
 		CB6A1F211A06925600450047 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6A1F201A06925600450047 /* SystemConfiguration.framework */; };
 		CB6A1F231A06926100450047 /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6A1F221A06926100450047 /* MediaAccessibility.framework */; };
 		CB79ACA81A45FC8A003F75AB /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB79ACA71A45FC8A003F75AB /* GoogleCast.framework */; };
+		CB864DA81A4DCB4000486C1A /* PlaybackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB864DA71A4DCB4000486C1A /* PlaybackViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,8 @@
 		CB6A1F201A06925600450047 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CB6A1F221A06926100450047 /* MediaAccessibility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaAccessibility.framework; path = System/Library/Frameworks/MediaAccessibility.framework; sourceTree = SDKROOT; };
 		CB79ACA71A45FC8A003F75AB /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleCast.framework; sourceTree = "<group>"; };
+		CB864DA61A4DCB4000486C1A /* PlaybackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaybackViewController.h; sourceTree = "<group>"; };
+		CB864DA71A4DCB4000486C1A /* PlaybackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaybackViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +258,8 @@
 				CB504CD91A0635A60084E04F /* SoundCloudTableViewController.m */,
 				CB4D22F91A02DB4400B9353D /* Images.xcassets */,
 				CB4D22EC1A02DB4400B9353D /* Supporting Files */,
+				CB864DA61A4DCB4000486C1A /* PlaybackViewController.h */,
+				CB864DA71A4DCB4000486C1A /* PlaybackViewController.m */,
 			);
 			path = Dotsy;
 			sourceTree = "<group>";
@@ -530,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB4D22F21A02DB4400B9353D /* AppDelegate.m in Sources */,
+				CB864DA81A4DCB4000486C1A /* PlaybackViewController.m in Sources */,
 				CB4D22EF1A02DB4400B9353D /* main.m in Sources */,
 				CB504CDA1A0635A60084E04F /* SoundCloudTableViewController.m in Sources */,
 			);

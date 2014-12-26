@@ -19,6 +19,4 @@
 @property (nonatomic, strong) GCKDeviceManager *deviceManager;
 @property (nonatomic, strong) GCKMediaControlChannel *mediaControlChannel;
 
-
-
 @end
