@@ -16,5 +16,6 @@
 
 @property (nonatomic, strong) UIButton *playPauseButton;
 @property (nonatomic, strong) NSURL *artworkURL;
+@property BOOL playing;
 
 @end

@@ -182,6 +182,7 @@
                  PlaybackViewController *playbackViewController = [[PlaybackViewController alloc] init];
                  playbackViewController.mediaControlChannel = self.mediaControlChannel;
                  playbackViewController.artworkURL = [[NSURL alloc] initWithString:hiResArtWorkURL];
+                 playbackViewController.playing = YES;
                  [self.navigationController pushViewController:playbackViewController animated:TRUE];
              }];
 }

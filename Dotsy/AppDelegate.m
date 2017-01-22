@@ -22,8 +22,6 @@
                        secret:@"dafd2220336ddf759b7b103e3efa1f04"
                   redirectURL:[NSURL URLWithString:@"dotsy://oauth"]];
     
-    // Login to SoundCloud using my credentials.
-    
 }
 
 

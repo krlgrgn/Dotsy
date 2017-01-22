@@ -16,8 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
-
     self.view.backgroundColor = [UIColor whiteColor];
     
     
@@ -25,6 +25,10 @@
     self.playPauseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.playPauseButton.frame = CGRectMake(100, 100, 100, 100);
     [self.playPauseButton setTitle:@"Play/Pause" forState:UIControlStateNormal];
+
+    [self.playPauseButton addTarget:self
+                             action:@selector(playPausePlayback:)
+                   forControlEvents:UIControlEventTouchUpInside];
     
     /*
      * Setup our background artowrk image.
@@ -36,10 +40,6 @@
     UIImageView *backgroundArtworkView = [[UIImageView alloc] initWithFrame:self.view.frame];
     backgroundArtworkView.image = backgroundArtworkImg;
     [backgroundArtworkView setContentMode:UIViewContentModeScaleAspectFill];
-    
-
-    
-    [self.playPauseButton addTarget:self action:@selector(playPausePlayback:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:backgroundArtworkView];
     //[self.view addSubview:self.playPauseButton];
@@ -63,6 +63,13 @@
 -(void)playPausePlayback:(UIButton *)sender {
     if ([sender isEqual:self.playPauseButton]) {
         NSLog(@"Play puase button preseed.");
+        if (self.playing) {
+            [self.mediaControlChannel pause];
+            NSLog(@"Playback is playing.");
+        } else {
+            [self.mediaControlChannel play];
+            NSLog(@"Playback is paused.");
+        }
     }
 }
 
